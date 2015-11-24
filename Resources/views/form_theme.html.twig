@@ -69,7 +69,7 @@ file that was distributed with this source code.
             {% endif %}
             <div style="margin-left: {{ marginLeft }}px">
                 {{- form_widget(child) -}}
-                {{- form_label(child, null, {translation_domain: choice_translation_domain}) -}}
+                {{- form_label(child) -}}
             </div>
         {% endfor -%}
     </div>
@@ -81,7 +81,7 @@ file that was distributed with this source code.
     {%- endif -%}
     <select {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %}>
         {%- if placeholder is not none -%}
-            <option value=""{% if required and value is empty %} selected="selected"{% endif %}>{{ placeholder != '' ? placeholder|trans({}, translation_domain) }}</option>
+            <option value=""{% if required and value is empty %} selected="selected"{% endif %}>{{ placeholder != '' ? placeholder|trans }}</option>
         {%- endif -%}
         {%- if preferred_choices|length > 0 -%}
             {% set options = preferred_choices %}
@@ -108,7 +108,7 @@ file that was distributed with this source code.
                 {% endfor %}
             {% endif %}
             {% set attr = choice.attr %}
-            <option value="{{ choice.value }}" {{ block('attributes') }}{% if choice is selectedchoice(value) %} selected="selected"{% endif %}>{{ index|raw }}{{ choice_translation_domain is same as(false) ? choice.label : choice.label|trans({}, choice_translation_domain) }}</option>
+            <option value="{{ choice.value }}" {{ block('attributes') }}{% if choice is selectedchoice(value) %} selected="selected"{% endif %}>{{ index|raw }}{{ choice.label|trans}}</option>
         {%- endif -%}
     {% endfor %}
 {%- endblock infinite_form_choice_tree_widget_options -%}
