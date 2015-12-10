@@ -100,7 +100,7 @@ class ChoiceTreeType extends ChoiceType
             return $treeChoiceListCache[$hash];
         };
 
-        $resolver->setDefaults(['choice_list' => $treeChoiceList]);
+        $resolver->setDefaults(['choice_list' => $treeChoiceList, 'choices_as_values' => true]);
     }
 
     /**
